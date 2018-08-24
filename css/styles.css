@@ -1,0 +1,51 @@
+html, body, .container {
+  height: 100%;
+  width: 100%;
+  background-image: url('../img/24.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 30px;
+  font-variant: small-caps;
+}
+.well, .jumbotron, .player1, .player2{
+  background-color: rgba(200, 160, 160, 0.5);
+  text-align: center;
+  font-weight: 900;
+  color:#230505;
+  border: none;
+  margin: none;
+}
+.player1{
+  float: left;
+}
+
+.player2{
+  float: right;
+  }
+.begin{
+  text-align: center;
+}
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #761212;
+  background-color: rgba(200, 160, 160, 0.7);
+  border: none;
+  margin: none;
+  border-radius: 15px;
+
+}
+
+button:hover {background-color: #7e7e7e;}
+
+button:active {
+  background-color: #696969;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
