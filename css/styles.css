@@ -5,27 +5,38 @@ html, body, .container {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  font-size: 30px;
+  font-size: 20px;
   font-variant: small-caps;
 }
-.well, .jumbotron, .player1, .player2{
+
+.well, .jumbotron{
   background-color: rgba(200, 160, 160, 0.5);
-  text-align: center;
   font-weight: 900;
   color:#230505;
   border: none;
   margin: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.player1{
-  float: left;
+.roller{
+  text-align: center;
 }
-
-.player2{
-  float: right;
-  }
+h2, .jumbotron{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bolder;
+}
 .begin{
   text-align: center;
 }
+#player1{
+  text-align: center;
+}
+#player2{
+  text-align: center;
+}
+/* .container {
+    padding: 2px 16px;
+} */
 button {
   display: inline-block;
   padding: 15px 25px;
@@ -39,7 +50,7 @@ button {
   border: none;
   margin: none;
   border-radius: 15px;
-
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 button:hover {background-color: #7e7e7e;}

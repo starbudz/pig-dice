@@ -12,17 +12,49 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="jumbotron">
-      <h1>PIG DICE</h1>
+  <div class="jumbotron">
+    <h1>PIG DICE</h1>
+  </div>
+  <div class="container" id="intro">
+    <div class="well">
+      <h2>Welcome to the game. The following are the rules:</h2>
+      <ol>
+        <li>Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold":</li>
+        <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
+        <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
+        <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
+        <li>The first player to score 100 or more points wins.</li>
+      </ol>
+
     </div>
-      <div class="well intro">
-        <p>Welcome to the Pig Dice Game</p><br>
-        <p>Here are the Rules</p>
-      </div>
-      <div class="begin">
-        <a href="game.html"><button type="button" name="button">START THE GAME</button></a>
-      </div>
+    <div class="begin">
+      <button id="begin" type="button" name="button">START THE GAME</button>
+    </div>
+  </div>
+  <div class="container" id="game">
+    <div class="well col-md-4" id="player1">
+      <h2>PLAYER 1</h2>
+      <h5>roll or hold</h5>
+      <a href="#" class="btn btn-danger" id="rollP2">ROLL</a>
+      <a href="#" class="btn btn-default" id="holdP2">HOLD</a>
+    </div>
+    <div class="well col-md-4" id="score">
+      <h2>SCORE</h2>
+      <p class="score"></p>
+
+    </div>
+
+    <div class="well col-md-4" id="player1">
+      <h2>PLAYER 2</h2>
+      <h5>roll or hold</h5>
+      <a href="#" class="btn btn-danger" id="rollP2">ROLL</a>
+      <a href="#" class="btn btn-default" id="holdP2">HOLD</a>
+    </div>
+    <div class="begin">
+      <button id="reset" type="button" name="button" onclick="location.reload()">Start Again?</button>
+    </div>
+  </div>
+
 
 </body>
 
