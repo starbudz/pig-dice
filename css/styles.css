@@ -17,9 +17,6 @@ html, body, .container {
   margin: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.roller{
-  text-align: center;
-}
 h2, .jumbotron{
   text-align: center;
   font-size: 30px;
@@ -52,7 +49,10 @@ button {
   border-radius: 15px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
+.options{
+  display: table;
+   margin: 0 auto;
+}
 button:hover {background-color: #7e7e7e;}
 
 button:active {

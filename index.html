@@ -34,22 +34,28 @@
   <div class="container" id="game">
     <div class="well col-md-4" id="player1">
       <h2>PLAYER 1</h2>
-      <h5>roll or hold</h5>
-      <a href="#" class="btn btn-danger" id="rollP2">ROLL</a>
-      <a href="#" class="btn btn-default" id="holdP2">HOLD</a>
+    </h3>Turn Score:<span id="player1TurnScore"></span>
+    <br>
+  </h3>Total Score:<span id="player1score"></span>
     </div>
+
     <div class="well col-md-4" id="score">
-      <h2>SCORE</h2>
-      <p class="score"></p>
-
+      <h2>ROLL OR HOLD</h2>
+      <div class="dice">
+      </div>
+      <div class="options">
+        <a href="#" class="btn btn-danger btn-lg" id="roll">ROLL</a>
+        <a href="#" class="btn btn-default btn-lg" id="hold">HOLD</a>
+      </div>
     </div>
 
-    <div class="well col-md-4" id="player1">
+    <div class="well col-md-4" id="player2">
       <h2>PLAYER 2</h2>
-      <h5>roll or hold</h5>
-      <a href="#" class="btn btn-danger" id="rollP2">ROLL</a>
-      <a href="#" class="btn btn-default" id="holdP2">HOLD</a>
+    </h3>Turn Score:<span id="player2TurnScore"></span>
+    <br>
+  </h3>Total Score:<span id="player2score"></span>
     </div>
+
     <div class="begin">
       <button id="reset" type="button" name="button" onclick="location.reload()">Start Again?</button>
     </div>

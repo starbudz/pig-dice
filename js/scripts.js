@@ -6,7 +6,7 @@ function player(playerName, score, turnScore, turn) {
 }
 var dice = {
   sides: 6,
-  roll: function() {
+  roller: function() {
     var randomNumber = Math.floor(Math.random() * this.sides) + 1;
     return randomNumber;
   }
@@ -24,6 +24,18 @@ var activePlayer = function() {
     $("#player1panel").removeClass("activeUser");
     $("#player2panel").addClass("activeUser");
   }
+}
+var whichPlayerHold = function() {
+  if (player1.isActive === true) {
+    playerHold(player1);
+  } else {
+    playerHold(player2);
+  }
+}
+
+var playerHold = function(player) {
+  player.gameScore += player.turnScore;
+  switchPlayer();
 }
 player.prototype.nextTurn = function () {
   if (player1.turn === true) {
@@ -59,20 +71,20 @@ $(document).ready(function() {
         activePlayer();
       });
       $("button#roll").click(function(event) {
-        $(".dice").html('<img src=img/die'+ randomDie +'.png>');
+        $(".dice").html('<img src=img/dice-'+ randomDie +'.png>');
         whichPlayerRoll();
-        stylePanels();
+        activePlayer();
         var roundScore = roundScore + randomNumber();
-        $("#player1Tscore").text(player1.turnScore);
-        $("#player1Gscore").text(player1.gameScore);
-        $("#player2Tscore").text(player2.turnScore);
-        $("#player2Gscore").text(player2.gameScore);
+        $("#player1TurnScore").text(player1.turnScore);
+        $("#player1score").text(player1.score);
+        $("#player2TurnScore").text(player2.turnScore);
+        $("#player2score").text(player2.score);
         event.preventDefault();
       })
 
       $("button#hold").click(function(event) {
         event.preventDefault();
         whichPlayerHold();
-        stylePanels();
+        activePlayer();
       })
       });
