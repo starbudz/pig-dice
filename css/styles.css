@@ -22,8 +22,14 @@ h2, .jumbotron{
   font-size: 30px;
   font-weight: bolder;
 }
-.begin{
+.begin {
   text-align: center;
+}
+.result{
+  text-align: center;
+}
+.reset{
+  float: right;
 }
 #player1{
   text-align: center;
@@ -31,9 +37,9 @@ h2, .jumbotron{
 #player2{
   text-align: center;
 }
-/* .container {
-    padding: 2px 16px;
-} */
+#game {
+  display: none;
+}
 button {
   display: inline-block;
   padding: 15px 25px;
@@ -49,7 +55,7 @@ button {
   border-radius: 15px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.options{
+.options {
   display: table;
    margin: 0 auto;
 }
