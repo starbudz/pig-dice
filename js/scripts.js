@@ -4,12 +4,13 @@ function Player(playerName, score, turnScore, turn) {
   this.turnScore = 0;
   this.turn = turn;
 }
-var roller = function(){
-  var dice = Math.floor((Math.random() * 6) + 1);
-   return dice;
-}
+var dice = roller();
 
-var roll = roller();
+function roller() {
+    dice = Math.floor(6*Math.random())+1;
+
+    return dice;
+};
 var startGame = function () {
   player1 = new Player();
   player2 = new Player();
@@ -17,13 +18,13 @@ var startGame = function () {
 }
 var nextTurn = function () {
 if (player1.turn === true){
-  turnReset();
   player1.turn = false;
   player2.turn = true;
-} else {
   turnReset();
+} else {
   player1.turn = true;
   player2.turn = false;
+  turnReset();
 }
 }
 var turnReset = function () {
@@ -36,42 +37,36 @@ var playerRoll = function() {
   } else {
     rolledOne(player2);
   }
-}
-var rolledOne = function (Player) {
-  if (roll === 1){
-    Player.turnScore = 0;
-    nextTurn();
-    $("h3.warning").text("You rolled a one. Score for this turn is zero.");
-  } else {
-    Player.turnScore += roll;
-  }
-  gameOver();
   return roll;
 }
-var playerHold = function(Player) {
+var playerHold = function() {
   if (player1.turn === true) {
     hold(player1);
   } else {
     hold(player2);
   }
 }
-
-var hold = function (Player) {
+var rolledOne = function () {
+  var roll = dice;
+  if (roll === 1){
+    $("h3.result").text("You rolled a one. Score for this turn is zero.");
+    nextTurn();
+  } else {
+    Player.turnScore += Player.roll;
+  }
+  gameOver();
+}
+var hold = function () {
   Player.score += Player.turnScore;
+  $("h3.result").text("Turn over. Next player ready.");
   nextTurn();
-  $("h3.warning").text("Turn over. Next player ready.");
 }
 var gameOver = function () {
-  if (player1.score >= 100 || player2.score >= 100) {
-    if (player1.score > player2.score) {
-      $("h3.warning").text("End of game! Player 1 won!");
-    } else if (player1.score < player2.score) {
-      $("h3.warning").text("End of game! Player 2 won!");
-  }else {
-    $("h3.warning").text("End of game! Tie!");
+  if (Player.score >= 100){
+    $("h3.result").text("Game Over! "+ Player.playerName +"is the winner" );
   }
 }
-}
+
 $(document).ready(function() {
       $("#begin").click(function() {
         $("#intro").hide();
@@ -79,7 +74,7 @@ $(document).ready(function() {
         startGame();
       });
       $("#roll").click(function(event) {
-        $(".result").html('<img src=img/dice' + roll + '.png>');
+        $(".result").html('<img src=img/dice' + dice + '.png>');
         playerRoll();
         $("#player1TurnScore").text(player1.turnScore);
         $("#player1score").text(player1.score);
