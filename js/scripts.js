@@ -1,16 +1,16 @@
+// BACK END START
 function Player(playerName, score, turnScore, turn) {
   this.playerName = playerName;
   this.score = 0;
   this.turnScore = 0;
   this.turn = turn;
 }
-var dice = roller();
+var roller = function(){
+  var dice = Math.floor((Math.random() * 6) + 1);
+   return dice;
+}
 
-function roller() {
-    dice = Math.floor(6*Math.random())+1;
-
-    return dice;
-};
+var roll = roller();
 var startGame = function () {
   player1 = new Player();
   player2 = new Player();
@@ -31,42 +31,8 @@ var turnReset = function () {
   player1.turnScore = 0;
   player2.turnScore = 0;
 }
-var playerRoll = function() {
-  if (player1.turn === true) {
-    rolledOne(player1);
-  } else {
-    rolledOne(player2);
-  }
-  return roll;
-}
-var playerHold = function() {
-  if (player1.turn === true) {
-    hold(player1);
-  } else {
-    hold(player2);
-  }
-}
-var rolledOne = function () {
-  var roll = dice;
-  if (roll === 1){
-    $("h3.result").text("You rolled a one. Score for this turn is zero.");
-    nextTurn();
-  } else {
-    Player.turnScore += Player.roll;
-  }
-  gameOver();
-}
-var hold = function () {
-  Player.score += Player.turnScore;
-  $("h3.result").text("Turn over. Next player ready.");
-  nextTurn();
-}
-var gameOver = function () {
-  if (Player.score >= 100){
-    $("h3.result").text("Game Over! "+ Player.playerName +"is the winner" );
-  }
-}
-
+// BACK END fIN
+// FRONT END START
 $(document).ready(function() {
       $("#begin").click(function() {
         $("#intro").hide();
@@ -74,17 +40,41 @@ $(document).ready(function() {
         startGame();
       });
       $("#roll").click(function(event) {
-        $(".result").html('<img src=img/dice' + dice + '.png>');
-        playerRoll();
+        event.preventDefault();
+        $(".result").html('<img src=img/dice' + roll + '.png>');
+        var rolledOne = function (Player) {
+          if (roll === 1){
+            Player.turnScore = 0;
+            nextTurn();
+            $("h3.warning").text("You rolled a one. Score for this turn is zero.");
+          } else {
+            Player.turnScore += roll;
+          }
+          return roll;
+        }
+        if (player1.turn === true) {
+          rolledOne(player1);
+        } else {
+          rolledOne(player2);
+        }
+        var roundScore = roundScore + roller();
         $("#player1TurnScore").text(player1.turnScore);
         $("#player1score").text(player1.score);
         $("#player2TurnScore").text(player2.turnScore);
         $("#player2score").text(player2.score);
-        event.preventDefault();
       })
 
       $("#hold").click(function(event) {
         event.preventDefault();
-        playerHold();
+        var hold = function (Player) {
+          Player.score += Player.turnScore;
+          nextTurn();
+          $("h3.warning").text("Turn over. Next player ready.");
+        }
+        if (player1.turn === true) {
+          hold(player1);
+        } else {
+          hold(player2);
+        }
       })
       });
